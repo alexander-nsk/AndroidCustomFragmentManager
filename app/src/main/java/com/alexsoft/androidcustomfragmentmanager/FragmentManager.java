@@ -9,21 +9,21 @@ import java.util.List;
 
 public class FragmentManager {
 
-    private volatile List<Fragment> fragmentList = new LinkedList<>();
+    private List<Fragment> fragmentList = new LinkedList<>();
 
     /**
      * Add fragment to stack
      *
      * @param fragment - object of custom Fragment class
      */
-    public synchronized void add(Fragment fragment) {
+    public void add(Fragment fragment) {
         fragmentList.add(fragment);
     }
 
     /**
      * Remove the last fragment from list
      */
-    public synchronized void pop() {
+    public void pop() {
         int size = fragmentList.size();
         if (size == 0) {
             return;
