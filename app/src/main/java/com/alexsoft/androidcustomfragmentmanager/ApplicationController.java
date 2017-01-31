@@ -21,7 +21,7 @@ public class ApplicationController extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        fragmentManager = new FragmentManager();
+        fragmentManager = new FragmentManager(this);
     }
 
     @Override

@@ -1,5 +1,9 @@
 package com.alexsoft.androidcustomfragmentmanager;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,6 +14,11 @@ import java.util.List;
 public class FragmentManager {
 
     private List<Fragment> fragmentList = new LinkedList<>();
+    private LinearLayout rootView;
+
+    public FragmentManager(Context context) {
+        this.rootView = new LinearLayout(context);
+    }
 
     /**
      * Add fragment to stack
@@ -37,12 +46,7 @@ public class FragmentManager {
      *
      * @return root view
      */
-    public Fragment getRootView() {
-        int size = fragmentList.size();
-        if (size == 0) {
-            return null;
-        }
-
-        return fragmentList.get(size);
+    public View getRootView() {
+        return rootView;
     }
 }
