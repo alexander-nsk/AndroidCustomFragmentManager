@@ -26,7 +26,10 @@ public class FragmentManager {
      * @param fragment - object of custom Fragment class
      */
     public void add(Fragment fragment) {
-        fragmentList.add(fragment);
+        rootView.removeAllViews();      //remove all fragments from root view
+        rootView.addView(fragment);     //add new fragment to rootView
+
+        fragmentList.add(fragment);     //add fragment to list
     }
 
     /**
