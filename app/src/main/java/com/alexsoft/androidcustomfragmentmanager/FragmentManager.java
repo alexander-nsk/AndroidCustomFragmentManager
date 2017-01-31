@@ -42,6 +42,13 @@ public class FragmentManager {
         }
 
         fragmentList.remove(size - 1);
+
+        size = fragmentList.size();
+        if (size == 0) {
+            return;
+        }
+
+        rootView.addView(fragmentList.get(size - 1));
     }
 
     /**
