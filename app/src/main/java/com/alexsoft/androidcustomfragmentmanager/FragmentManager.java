@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * Created by Alex on 30.01.2017.
@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 public class FragmentManager {
 
-    private LinkedList<Fragment> fragmentList = new LinkedList<>();
+    private Stack<Fragment> fragmentStack = new Stack<>();
     private LinearLayout rootView;
 
     public FragmentManager(Context context) {
@@ -28,25 +28,25 @@ public class FragmentManager {
         rootView.removeAllViews();      //remove all fragments from root view
         rootView.addView(fragment);     //add new fragment to rootView
 
-        fragmentList.add(fragment);     //add fragment to list
+        fragmentStack.add(fragment);     //add fragment to list
     }
 
     /**
      * Remove the last fragment from list
      */
     public void pop() throws Exception {
-        if (fragmentList.isEmpty()) {
+        if (fragmentStack.isEmpty()) {
             throw new Exception("Can't remove the last fragment from list. Cause: List is empty");
         }
 
-        fragmentList.removeLast();                  //remove last fragment from list
+        fragmentStack.pop();                  //remove last fragment from list
 
-        if (fragmentList.isEmpty()) {               //check if list is empty
+        if (fragmentStack.isEmpty()) {               //check if list is empty
             return;
         }
 
         rootView.removeAllViews();                  //remove all fragments from root view
-        rootView.addView(fragmentList.getLast());   //add the last fragment to root view
+        rootView.addView(fragmentStack.lastElement());   //add the last fragment to root view
     }
 
     /**
