@@ -39,13 +39,12 @@ public class FragmentManager {
             throw new IllegalStateException("Can't remove the last fragment from list. Cause: List is empty");
         }
 
-        fragmentStack.pop();                  //remove last fragment from list
+        rootView.removeView(fragmentStack.pop());                  //remove all fragments from root view
 
         if (fragmentStack.isEmpty()) {               //check if list is empty
             return;
         }
 
-        rootView.removeAllViews();                  //remove all fragments from root view
         rootView.addView(fragmentStack.lastElement());   //add the last fragment to root view
     }
 
