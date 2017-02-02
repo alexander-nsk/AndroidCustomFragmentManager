@@ -10,4 +10,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(ApplicationController.getInstance().getFragmentManager().getRootView());
     }
+
+    @Override
+    public void onBackPressed() {
+        try {
+            ApplicationController.getInstance().getFragmentManager().pop();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
+
+        if (ApplicationController.getInstance().getFragmentManager().isEmpty()) {
+            finish();
+        }
+    }
 }

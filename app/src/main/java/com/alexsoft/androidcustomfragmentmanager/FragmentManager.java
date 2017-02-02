@@ -34,9 +34,9 @@ public class FragmentManager {
     /**
      * Remove the last fragment from list
      */
-    public void pop() throws Exception {
+    public void pop() throws IllegalStateException {
         if (fragmentStack.isEmpty()) {
-            throw new Exception("Can't remove the last fragment from list. Cause: List is empty");
+            throw new IllegalStateException("Can't remove the last fragment from list. Cause: List is empty");
         }
 
         fragmentStack.pop();                  //remove last fragment from list
@@ -56,5 +56,12 @@ public class FragmentManager {
      */
     public View getRootView() {
         return rootView;
+    }
+
+    /**
+     * @return true, if manager have no fragments
+     */
+    public boolean isEmpty() {
+        return fragmentStack.isEmpty();
     }
 }
