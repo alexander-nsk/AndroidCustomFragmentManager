@@ -28,7 +28,7 @@ public class FragmentManager {
         rootView.removeAllViews();      //remove all fragments from root view
         rootView.addView(fragment);     //add new fragment to rootView
 
-        fragmentStack.add(fragment);     //add fragment to list
+        fragmentStack.push(fragment);     //add fragment to list
     }
 
     /**
