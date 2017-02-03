@@ -15,7 +15,14 @@ public class FragmentManager {
     private Stack<Fragment> fragmentStack = new Stack<>();
     private LinearLayout rootView;
 
+    public Context getContext() {
+        return context;
+    }
+
+    private Context context;
+
     public FragmentManager(Context context) {
+        this.context = context;
         this.rootView = new LinearLayout(context);
     }
 
@@ -25,7 +32,7 @@ public class FragmentManager {
      * @param fragment - object of custom Fragment class
      */
     public void add(Fragment fragment) {
-        rootView.removeAllViews();      //remove all fragments from root view
+        rootView = new LinearLayout(this.context);      //reset root view
         rootView.addView(fragment);     //add new fragment to rootView
 
         fragmentStack.push(fragment);     //add fragment to list
