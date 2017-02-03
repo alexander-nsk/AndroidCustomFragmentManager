@@ -32,7 +32,7 @@ public class FragmentManager {
      * @param fragment - object of custom Fragment class
      */
     public void add(Fragment fragment) {
-        rootView = new LinearLayout(this.context);      //reset root view
+        rootView.removeAllViews();    //remove all fragments from root view
         rootView.addView(fragment);     //add new fragment to rootView
 
         fragmentStack.push(fragment);     //add fragment to list
