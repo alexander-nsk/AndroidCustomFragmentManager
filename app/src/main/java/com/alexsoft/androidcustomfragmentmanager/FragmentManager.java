@@ -14,16 +14,15 @@ public class FragmentManager {
 
     private Stack<Fragment> fragmentStack = new Stack<>();
     private LinearLayout rootView;
-
-    public Context getContext() {
-        return context;
-    }
-
     private Context context;
 
     public FragmentManager(Context context) {
         this.context = context;
         this.rootView = new LinearLayout(context);
+    }
+
+    public Context getContext() {
+        return context;
     }
 
     /**

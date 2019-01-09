@@ -8,15 +8,14 @@ import android.app.Application;
 
 public class ApplicationController extends Application {
     private static ApplicationController mInstance;
+    private FragmentManager fragmentManager;
 
     public static synchronized ApplicationController getInstance() {
-
-        if (mInstance == null)
+        if (mInstance == null) {
             mInstance = new ApplicationController();
+        }
         return mInstance;
     }
-
-    private FragmentManager fragmentManager;
 
     @Override
     public void onCreate() {
